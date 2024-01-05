@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+// Function to calculate the sum of squares of digits
+int squareSum(int num) {
+    int sum = 0;
+    while (num > 0) {
+        int digit = num % 10;
+        sum += digit * digit;
+        num /= 10;
+    }
+    return sum;
+}
+
+// Function to check if a number is happy
+int isHappy(int num) {
+    while (num >= 10) {
+        num = squareSum(num);
+    }
+    return num == 1;
+}
+
+int main() {
+    printf("2-digit happy numbers:\n");
+    for (int i = 10; i <= 99; ++i) {
+        if (isHappy(i)) {
+            printf("%d\n", i);
+        }
+    }
+
+    return 0;
+}
+
